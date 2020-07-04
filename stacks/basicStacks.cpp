@@ -42,7 +42,8 @@ int main()
     cout << "4. isEmptyStack " << "\n"; 
     do {
         cout << "Enter Anyone: " << "\n";
-        cin >> val;
+        cin >> yup;
+        
         switch(yup) {
             case 1: 
             cout << "Enter the val." << "\n";
