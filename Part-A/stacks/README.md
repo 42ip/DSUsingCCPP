@@ -13,6 +13,8 @@
 
 
 ```cpp
+
+
 Push(data)        : pushes the data onto the stack
 
 Pop()             : removes the last inserted element
