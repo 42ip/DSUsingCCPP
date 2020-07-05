@@ -9,7 +9,7 @@ int *stack = new int[max];
 
 void push(int data){
     if(top==max){
-        cout << "Stack Overflow" << "\n";
+        cout << "Stack overflow" << "\n";
     }
 
     top++;
@@ -18,7 +18,7 @@ void push(int data){
 
 void pop(){
     if(top == -1){
-        cout << "Stack Underflow" << "\n";
+        cout << "Stack underflow" << "\n";
     }else{
         cout << "The popped element is "<< stack[top] << "\n";
         top--;
