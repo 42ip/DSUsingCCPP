@@ -1,47 +1,36 @@
 #include <iostream>
 
 using namespace std;
-
-void BS(int arr[], int x, int y, int num)
+   int bs(int A[], int l, int h, int x)
 {
-    int z;
- 
-    if (x > y)
-    {
-       cout << "number not found";
-    }
-    z = (x + y) / 2;
-    if (arr[z] == num)
-    {
-       cout << z ;
-    }
-    else if (arr[z] < num)
-    {
-        BS(arr, z + 1, y, num);
-    }
-    else if (arr[z] > num)
-    {
-        BS(arr, x, z - 1, num);
-    }
+	if (l > h)
+		return -1;
+
+
+	int mid = (l + h)/2;	
+	if (x == A[mid])
+		return mid;
+	else if (x < A[mid])
+		return bs(A, l,  mid - 1, x);
+
+	else
+		return bs(A, mid + 1, h, x);
 }
 
-
-int main()
+int main(void)
 {
-    int num, size;
-    int arr[100];
- 
-   cout << "enter the size: ";
-   cin >> size;
-   cout << "enter the elements: ";
-    for(int i = 0; i < size; i++)
-    {
-        cin >> arr[i];
-    }
-    cout << "enter the element to be searched: " << "\n";
-    cin >> num;
-    BS(arr, 0, size, num);
- 
+	int A[] = { 1, 2, 4, 5, 7, 54 };
+	int target = 4;
+
+	int n = sizeof(A)/sizeof(A[0]);
+
+	int l = 0, h = n - 1;
+	int index = bs(A, l, h, target);
+
+	if (index != -1)
+		cout << "element found at index "<< index << "\n";
+	else
+		cout << "element not found in the array" << "\n";
+
+	return 0;
 }
-
-
