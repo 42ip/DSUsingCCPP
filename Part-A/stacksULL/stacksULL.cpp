@@ -1,17 +1,21 @@
 #include <iostream>
 using namespace std;
-struct Node {
+struct Node
+{
    int data;
-   struct Node *yes;
+   struct Node *yes; 
+   
 };
 struct Node* top = NULL;
-void push(int value) {
-   struct Node* temp = (struct Node*) malloc(sizeof(struct Node));
-   temp->data = value;
+void push(int value) 
+{
+   struct Node* temp = (struct Node*) malloc(sizeof(struct Node)); 
+   temp->data = value; 
    temp->yes = top;
    top = temp;
 }
-void pop() {
+void pop() 
+{
    if(top==NULL)
    cout<<"stack underflow"<<"\n";
    else {
@@ -19,7 +23,8 @@ void pop() {
       top = top->yes;
    }
 }
-void display() {
+void display() 
+{
    struct Node* si;
    if(top==NULL)
    cout<<"stack is empty";
@@ -33,7 +38,8 @@ void display() {
    }
    cout<<"\n";
 }
-int main() {
+int main() 
+{
    int choice, value;
    cout<<"1) push the data in the stack"<<"\n";
    cout<<"2) pop from stack"<<"\n";
@@ -43,26 +49,31 @@ int main() {
       cout<<"enter anyone: "<<"\n";
       cin>>choice;
       switch(choice) {
-         case 1: {
+         case 1: 
+            {
             cout<<"enter value to be pushed:"<<"\n";
             cin>>value;
             push(value);
             break;
          }
-         case 2: {
+         case 2: 
+            {
             pop();
             break;
          }
-         case 3: {
+         case 3: 
+            {
             display();
             break;
          }
-         case 4: {
+         case 4: 
+            {
             cout<<"exit"<<"\n";
             break;
          }
-         default: {
-            cout<<"invalid Choice"<<"\n";
+         default: 
+            {
+            cout<<"invalid choice"<<"\n";
          }
       }
    }while(choice!=4);
