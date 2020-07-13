@@ -1,7 +1,7 @@
-# reverse a singly linked list
+# Reverse a singly linked list
 
 ## It can be done in both 
 
-> iterative manner
+> Iterative manner
 
-> recursive manner
+> Recursive manner

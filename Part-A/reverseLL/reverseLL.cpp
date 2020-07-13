@@ -62,7 +62,7 @@ void display()
         cout << ptr->data << "\n";
         ptr = ptr->yes;
     }
-    cout << "\n"; // spacing
+    cout << "\n"; // spacing b/w the display and reverse
 }
 
 int main()
