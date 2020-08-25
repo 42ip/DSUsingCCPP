@@ -43,15 +43,15 @@ void ifPalindrome()
         temp = temp->next;
         i++;
     }
-    Node *temp1 = head;
+    temp = head;
     for (i = i - 1; i > -1; i--)
     {
-        if (temp1->data != arr[i])
+        if (temp->data != arr[i])
         {
             isPalindrome = false;
             break;
         }
-        temp1 = temp1->next;
+        temp = temp->next;
     }
     if (isPalindrome)
         printf("\nis a palindrome");
@@ -65,7 +65,7 @@ int main()
     insert('c');
     insert('c');
     insert('b');
-    insert('a');
+    insert('x');
     displayll();
     ifPalindrome();
     return 0;

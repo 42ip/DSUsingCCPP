@@ -50,15 +50,15 @@ void check()
         temp = temp->next;
         i++;
     }
-    node *yes = top;
+   temp=top;
 
-    for (i-=1; i > -1; i--)
+    for (i=i-1; i > -1; i--)
     {
-        if (yes->value == arr[i])
+        if (temp->value != arr[i])
         {
             isPalindrome = false;
         }
-        yes = yes->next;
+        temp = temp->next;
     }
     if (isPalindrome)
         cout << " is a palindrome";
@@ -70,8 +70,8 @@ int main()
     insert('l');
     insert('e');
     insert('a');
-    insert('r');
-    insert('n');
+    insert('e');
+    insert('l');
     show();
     check();
     return 0;
