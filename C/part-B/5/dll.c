@@ -43,6 +43,55 @@ void InsertLast(int x)
     temp->next = newNode;
     newNode->prev = temp;
 }
+int length()
+{
+    int i = 0;
+    struct Node *temp = head;
+    while (temp)
+    {
+        temp = temp->next;
+        i++;
+    }
+    return i;
+}
+void insert(int data, int pos)
+{
+    struct Node *newNode = MakeNode(data);
+    if (head == NULL)
+        head = newNode;
+    else
+    {
+        if (pos == 0)
+        {
+            head->prev = newNode;
+            newNode->next = head;
+            head = newNode;
+        }
+        else if (pos < length())
+        {
+            struct Node *temp = head;
+            while (pos > 1 && temp->next)
+            {
+                temp = temp->next;
+                pos--;
+            }
+            newNode->prev = temp;
+            newNode->next = temp->next;
+            temp->next->prev = newNode;
+            temp->next = newNode;
+        }
+        else
+        {
+            struct Node *temp = head;
+            while(temp->next)
+            {
+                temp=temp->next;
+            }
+            newNode->prev=temp;
+            temp->next=newNode;
+        }
+    }
+}
 void PrintForward()
 {
     struct Node *temp = head;
@@ -78,15 +127,10 @@ int main()
 
     head = NULL;
     InsertLast(2);
-    PrintForward();
-    PrintReverse();
     InsertLast(4);
-    PrintForward();
-    PrintReverse();
     InsertFirst(6);
-    PrintForward();
-    PrintReverse();
     InsertLast(8);
+    insert(10, 3);
     PrintForward();
     PrintReverse();
 }

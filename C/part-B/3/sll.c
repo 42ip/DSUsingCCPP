@@ -1,182 +1,84 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdbool.h>
-#define null NULL
-struct Node
+
+typedef struct Node
 {
     int data;
-    int key;
     struct Node *next;
-};
-struct Node *head = null;
-struct Node *current = null;
-
-void printList()
+} Node;
+Node *head = NULL;
+void appendInsert(int data)
 {
-    struct Node *ptr = head;
-    while (ptr != null)
+    Node *link = malloc(sizeof(Node));
+    link->data = data;
+    if (head == NULL)
+        head = link;
+    else
     {
-        printf("Key=%d,Data=%d\n", ptr->key, ptr->data);
-        ptr = ptr->next;
+        Node *temp = head;
+        while (temp->next)
+            temp = temp->next;
+        temp->next = link;
     }
 }
-
-void insertFirst(int key, int data)
+int listLength()
 {
-    struct Node *link = (struct Node *)(malloc(sizeof(struct Node)));
-    link->key = key;
-    link->data = data;
-    link->next = head;
-    head = link;
-}
-void insert(int key, int data,int pos)
-{
-    struct Node *link = (struct Node *)(malloc(sizeof(struct Node)));
-    link->key = key;
-    link->data = data;
-    if (head==null)
+    int i = 0;
+    Node *temp = head;
+    while (temp)
     {
+        i++;
+        temp = temp->next;
+    }
+    return i;
+}
+void insertPos(int data, int pos)
+{
+    int len = listLength();
+    if (len < pos)
+    {
+        printf("Cant insert");
+        return;
+    }
+    Node *link = malloc(sizeof(Node));
+    link->data = data;
+    Node *temp = head;
+    if (pos == 0)
+    {
+        link->next=head;
         head=link;
     }
-    else {
-        struct Node *temp = head;
-        while (pos--)
-        {
-            temp=temp->next;
-        }
-        link->next=temp->next;
-        temp->next=link;
-    }
-}
-struct Node *delete (int key)
-{
-    struct Node *curr = head;
-    struct Node *prev = null;
-    if (head == null)
-    {
-        printf("The list is empty");
-        return null;
-    }
-    while (curr->key != key)
-    {
-        if (curr->next == null)
-            return null;
-        else
-        {
-            prev = curr;
-            curr = curr->next;
-        }
-    }
-    if (curr == head)
-    {
-        head = head->next;
-    }
     else
     {
-        prev->next = curr->next;
-    }
-    return curr;
-}
-bool isEmpty()
-{
-    return head == null;
-}
-
-int length()
-{
-    int length = 0;
-    struct Node *temp = head;
-    while (temp != null)
-    {
-        temp = temp->next;
-        length++;
-    }
-    return length;
-}
-struct Node *find(int key)
-{
-    struct Node *temp = head;
-    while (temp->key != key)
-    {
-        if (temp->next == null)
-        {
-            return null;
-        }
-        else
+        while (pos > 1 && temp->next)
         {
             temp = temp->next;
+            pos--;
         }
+        link->next = temp->next;
+        temp->next = link;
     }
-    return temp;
 }
-
-struct Node *deleteFirst()
+void printList()
 {
-    struct Node *temp = head;
-    head = head->next;
-    return temp;
+    Node *temp = head;
+    while (temp)
+    {
+        printf("%d ", temp->data);
+        temp = temp->next;
+    }
 }
-void main()
+int main()
 {
-    insert(1, 10,1);
-    insert(2, 20,2);
-    insert(3, 30,3);
-    insert(4, 72,4);    
-    insert(5, 40,5);
-    insert(6, 56,6);
-
-    printf("Original List: ");
-
-    //print list
+    appendInsert(10);
+    appendInsert(20);
+    appendInsert(30);
+    appendInsert(40);
+    appendInsert(50);
+    appendInsert(60);
+    appendInsert(70);
+    appendInsert(80);
+    insertPos(15, 8);
     printList();
-
-    while (!isEmpty())
-    {
-        struct Node *temp = deleteFirst();
-        printf("\nDeleted value:");
-        printf("(%d,%d) ", temp->key, temp->data);
-    }
-
-    printf("\nList after deleting all items: ");
-    printList();
-    insertFirst(1, 10);
-    insertFirst(2, 20);
-    insertFirst(3, 30);
-    insertFirst(4, 72);
-    insertFirst(5, 40);
-    insertFirst(6, 56);
-
-    printf("\nRestored List: ");
-    printList();
-    printf("\n");
-
-    struct Node *foundLink = find(4);
-
-    if (foundLink != NULL)
-    {
-        printf("Element found: ");
-        printf("(%d,%d) ", foundLink->key, foundLink->data);
-        printf("\n");
-    }
-    else
-    {
-        printf("Element not found.");
-    }
-
-    delete (4);
-    printf("List after deleting an item: ");
-    printList();
-    printf("\n");
-    foundLink = find(4);
-
-    if (foundLink != NULL)
-    {
-        printf("Element found: ");
-        printf("(%d,%d) ", foundLink->key, foundLink->data);
-        printf("\n");
-    }
-    else
-    {
-        printf("Element not found.");
-    }
+    return 0;
 }
