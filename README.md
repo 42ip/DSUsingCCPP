@@ -1,3 +1,3 @@
 # DSUsingCCPP
 
-This repository is for 3rd sem Data Structures using C & CPP
+[Issues](https://github.com/42ip/DSUsingCCPP/issues)
