@@ -1,3 +1,3 @@
 # DSUsingCCPP
 
-[Issues](https://github.com/42ip/DSUsingCCPP/issues)
+## [Open Issues](https://github.com/42ip/DSUsingCCPP/issues)
