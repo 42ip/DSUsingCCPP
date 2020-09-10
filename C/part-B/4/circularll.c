@@ -17,13 +17,15 @@ bool isEmpty()
 void printList()
 {
     struct Node *ptr = head;
-    if(head != null) {
-	
-      while(ptr->next != ptr) {     
-         printf("(%d,%d) ",ptr->key,ptr->data);
-         ptr = ptr->next;
-      }
-   }
+    if (head != null)
+    {
+
+        while (ptr->next != ptr)
+        {
+            printf("(%d,%d) ", ptr->key, ptr->data);
+            ptr = ptr->next;
+        }
+    }
 }
 void insertFirst(int key, int data)
 {
@@ -40,6 +42,31 @@ void insertFirst(int key, int data)
     {
         link->next = head;
         head = link;
+    }
+}
+void insert(int key, int data, int pos)
+{
+    struct Node *link = malloc(sizeof(struct Node));
+    link->data = data;
+    link->key = key;
+    if (pos == 0)
+    {
+        link->next = head;
+        head = link;
+    }
+    else
+    {
+        struct Node *temp = head;
+        while (pos>1 && temp->next)
+        {
+            temp = temp->next;
+            pos--;
+        }
+       
+        
+            link->next = temp->next;
+            temp->next = link;
+        
     }
 }
 struct Node *delete (int key)
@@ -141,7 +168,7 @@ void main()
     insertFirst(4, 72);
     insertFirst(5, 40);
     insertFirst(6, 56);
-
+    insert(29, 16, 2);
     printf("\nRestored List: ");
     printList();
     printf("\n");
