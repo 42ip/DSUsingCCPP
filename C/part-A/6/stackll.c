@@ -37,16 +37,16 @@ int Top()
 
 int isempty()
 {
-    return head==NULL;
+    return head == NULL;
 }
 {
-    if(head == NULL)
+    if (head == NULL)
     {
         printf("NULL\n");
     }
     else
     {
-        printf("%d\n", head -> data);
+        printf("%d\n", head->data);
         display(head->next);
     }
 }
@@ -57,9 +57,9 @@ int main()
     push(10);
     push(20);
     push(30);
-    printf("The top is %d\n",Top());
+    printf("The top is %d\n", Top());
     pop();
-    printf("The top after pop is %d\n",Top());
+    printf("The top after pop is %d\n", Top());
     display(head);
     return 0;
 }

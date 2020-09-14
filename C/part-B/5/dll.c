@@ -83,12 +83,12 @@ void insert(int data, int pos)
         else
         {
             struct Node *temp = head;
-            while(temp->next)
+            while (temp->next)
             {
-                temp=temp->next;
+                temp = temp->next;
             }
-            newNode->prev=temp;
-            temp->next=newNode;
+            newNode->prev = temp;
+            temp->next = newNode;
         }
     }
 }

@@ -41,7 +41,7 @@ void reverse()
         prev = curr;
         curr = next;
     }
-    head=prev;
+    head = prev;
 }
 int main()
 {

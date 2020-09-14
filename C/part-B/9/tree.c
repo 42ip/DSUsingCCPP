@@ -40,7 +40,7 @@ void preorder(node *t)
 }
 void postOrder(node *t)
 {
-    if(t!=NULL)
+    if (t != NULL)
     {
         postOrder(t->left);
         postOrder(t->right);
@@ -50,10 +50,10 @@ void postOrder(node *t)
 
 void inorder(node *t)
 {
-    if(t!=NULL)
+    if (t != NULL)
     {
         inorder(t->left);
-        printf("%d ",t->data);
+        printf("%d ", t->data);
         inorder(t->right);
     }
 }

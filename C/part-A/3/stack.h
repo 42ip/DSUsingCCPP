@@ -1,14 +1,16 @@
-#define SIZE 50 
+#define SIZE 50
 int stack[SIZE];
-int top = -1; 
+int top = -1;
 
 void push(int item)
 {
-    if (top >= SIZE - 1) {
+    if (top >= SIZE - 1)
+    {
         printf("stack over flow");
         return;
     }
-    else {
+    else
+    {
         top = top + 1;
         stack[top] = item;
     }
@@ -16,10 +18,12 @@ void push(int item)
 int pop()
 {
     int item;
-    if (top < 0) {
+    if (top < 0)
+    {
         printf("stack under flow");
     }
-    else {
+    else
+    {
         item = stack[top];
         top = top - 1;
         return item;

@@ -45,8 +45,8 @@ void insertPos(int data, int pos)
     Node *temp = head;
     if (pos == 0)
     {
-        link->next=head;
-        head=link;
+        link->next = head;
+        head = link;
     }
     else
     {

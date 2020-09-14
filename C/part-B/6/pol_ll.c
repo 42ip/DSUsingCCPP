@@ -57,22 +57,3 @@ int main()
     print();
     return 0;
 }
-
-// while (temp)
-// {
-//     // if (pow > temp->pow)
-//     // {
-//     //     link->next = temp->next;
-//     //     temp = temp->next; temp->next = link;
-//     //     break;
-//     // }
-//     // else
-//     //     temp = temp->next;
-//     if (temp->next == NULL)
-//     {
-//         temp->next = link;
-//         break;
-//     }
-//     else
-//         temp = temp->next;
-// }

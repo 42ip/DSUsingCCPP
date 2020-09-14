@@ -30,7 +30,7 @@ void insert(int data)
             Node *temp = head;
             while (temp->next && temp->next->data > data)
                 temp = temp->next;
-            link->next=temp->next;
+            link->next = temp->next;
             temp->next = link;
         }
     }
