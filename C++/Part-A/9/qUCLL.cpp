@@ -1,65 +1,129 @@
 #include <iostream>
+#define SIZE 5
+
 using namespace std;
-struct node
+
+class Queue
 {
-    int data;
-    struct node *next;
-};
+private:
+    int items[SIZE], front, rear;
 
-struct node *top = NULL;
-
-void enqueue(int val)
-{
-    struct node *newnode = (struct node *)malloc(sizeof(struct node));
-    newnode->data = val;
-    newnode->next = top;
-    top = newnode;
-}
-
-void display()
-{
-
-    struct node *temp;
-
-    if (top == NULL)
-        cout << "empty";
-    else
+public:
+    Queue()
     {
-        temp = top;
-        cout << "stack elements are: ";
+        front = -1;
+        rear = -1;
+    }
 
-        while (temp != NULL)
+    bool isFull()
+    {
+        if (front == 0 && rear == SIZE - 1)
+            return true;
+        if (front == rear + 1)
+            return true;
+        return false;
+    }
+
+    bool isEmpty()
+    {
+        if (front == -1)
+            return true;
+        else
+            return false;
+    }
+
+    void enQueue(int element)
+    {
+        if (isFull())
+            cout << "Queue is full";
+        else
         {
-            cout << temp->data << " ";
-            temp = temp->next;
+            if (front == -1)
+                front = 0;
+            rear = (rear + 1) % SIZE;
+            items[rear] = element;
+            cout << endl
+                 << "Inserted " << element << endl;
         }
     }
-    cout << "\n";
-}
 
-void dequeue()
-{
-    if (top == NULL)
-        cout << "underflow" << endl;
-    else
+    int deQueue()
     {
-        cout << "popped element: " << top->data << endl;
-        top = top->next;
+        int element;
+        if (isEmpty())
+        {
+            cout << "Queue is empty" << endl;
+            return (-1);
+        }
+        else
+        {
+            element = items[front];
+            if (front == rear)
+            {
+                front = -1;
+                rear = -1;
+            }
+
+            else
+            {
+                front = (front + 1) % SIZE;
+            }
+            return (element);
+        }
     }
-}
+
+    void display()
+    {
+
+        int i;
+        if (isEmpty())
+        {
+            cout << endl
+                 << "Empty Queue" << endl;
+        }
+        else
+        {
+            cout << "Front -> " << front;
+            cout << endl
+                 << "Items -> ";
+            for (i = front; i != rear; i = (i + 1) % SIZE)
+                cout << items[i];
+            cout << items[i];
+            cout << endl
+                 << "Rear -> " << rear;
+        }
+    }
+};
 
 int main()
 {
-    enqueue(10);
-    enqueue(20);
-    enqueue(30);
-    enqueue(40);
-    enqueue(50);
-    enqueue(60);
-    display();
-    dequeue();
-    dequeue();
-    dequeue();
-    display();
+    Queue q;
+
+    q.deQueue();
+
+    q.enQueue(1);
+    q.enQueue(2);
+    q.enQueue(3);
+    q.enQueue(4);
+    q.enQueue(5);
+
+    q.enQueue(6);
+
+    q.display();
+
+    int elem = q.deQueue();
+
+    if (elem != -1)
+        cout << endl
+             << "Deleted Element is " << elem;
+
+    q.display();
+
+    q.enQueue(7);
+
+    q.display();
+
+    q.enQueue(8);
+
     return 0;
 }
