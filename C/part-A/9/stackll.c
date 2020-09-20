@@ -3,7 +3,7 @@
 struct Node
 {
     int data;
-    struct Node *link;
+    struct Node *next;
 };
 struct Node *top;
 
@@ -17,7 +17,7 @@ void push(int data)
         exit(1);
     }
     temp->data = data;
-    temp->link = top;
+    temp->next = top;
     top = temp;
 }
 int isEmpty()
@@ -42,8 +42,8 @@ void pop()
     else
     {
         temp = top;
-        top = top->link;
-        temp->link = NULL;
+        top = top->next;
+        temp->next = NULL;
         free(temp);
     }
 }
@@ -63,7 +63,7 @@ void display()
         while (temp != NULL)
         {
             printf("%d ", temp->data);
-            temp = temp->link;
+            temp = temp->next;
         }
         printf("\n");
     }

@@ -40,25 +40,25 @@ float operation(int a, int b, char op)
 float PostfixEval(string post) // making a function for the evaluation of postfix
 {
     int a, b;
-    stack<float> lol;
-    string::iterator yes; // towards a character
-    for (yes = post.begin(); yes != post.end(); yes++)
+    stack<float> postStack;
+    string::iterator i; // towards a character
+    for (i = post.begin(); i != post.end(); i++)
     {
-        if (Operator(*yes) != -1) // if the given stack is not empty
+        if (Operator(*i) != -1) // if the given stack is not empty
         {
-            a = lol.top();
-            lol.pop();
-            b = lol.top();
-            lol.pop();
+            a = postStack.top();
+            postStack.pop();
+            b = postStack.top();
+            postStack.pop();
             // for operator we have to pop 2 times
-            lol.push(operation(a, b, *yes));
+            postStack.push(operation(a, b, *i));
         }
-        else if (Operand(*yes) > 0)
+        else if (Operand(*i) > 0)
         {
-            lol.push(con(*yes)); // after converting the character into integer, we have to push the integer into stack.
+            postStack.push(con(*i)); // after converting the character into integer, we have to push the integer into stack.
         }
     }
-    return lol.top();
+    return postStack.top();
 }
 int main()
 {

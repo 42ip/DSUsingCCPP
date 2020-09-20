@@ -4,7 +4,7 @@
 struct Node
 {
 	int data;
-	struct Node *link;
+	struct Node *next;
 };
 
 struct Queue
@@ -19,10 +19,10 @@ void enQueue(struct Queue *q, int value)
 	if (q->front == NULL)
 		q->front = temp;
 	else
-		q->rear->link = temp;
+		q->rear->next = temp;
 
 	q->rear = temp;
-	q->rear->link = q->front;
+	q->rear->next = q->front;
 }
 
 int deQueue(struct Queue *q)
@@ -45,8 +45,8 @@ int deQueue(struct Queue *q)
 	{
 		struct Node *temp = q->front;
 		value = temp->data;
-		q->front = q->front->link;
-		q->rear->link = q->front;
+		q->front = q->front->next;
+		q->rear->next = q->front;
 		free(temp);
 	}
 
@@ -57,10 +57,10 @@ void displayQueue(struct Queue *q)
 {
 	struct Node *temp = q->front;
 	printf("\nElements in Queue are: ");
-	while (temp->link != q->front)
+	while (temp->next != q->front)
 	{
 		printf("%d ", temp->data);
-		temp = temp->link;
+		temp = temp->next;
 	}
 	printf("%d", temp->data);
 }

@@ -17,13 +17,13 @@ int bs(int A[], int l, int h, int x)
 
 int main(void)
 {
-    int A[] = {1, 2, 4, 5, 7, 54};
+    int array[] = {1, 2, 4, 5, 7, 54};
     int target = 4;
 
-    int n = sizeof(A) / sizeof(A[0]);
+    int n = sizeof(array) / sizeof(array[0]);
 
     int l = 0, h = n - 1;
-    int index = bs(A, l, h, target);
+    int index = bs(array, l, h, target);
 
     if (index != -1)
         cout << "element found at index " << index << "\n";

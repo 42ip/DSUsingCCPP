@@ -3,7 +3,7 @@ using namespace std;
 struct Node
 {
    int data;
-   struct Node *yes; 
+   struct Node *next; 
    
 };
 struct Node* top = NULL;
@@ -11,7 +11,7 @@ void push(int value)
 {
    struct Node* temp = (struct Node*) malloc(sizeof(struct Node)); 
    temp->data = value; 
-   temp->yes = top;
+   temp->next = top;
    top = temp;
 }
 void pop() 
@@ -20,7 +20,7 @@ void pop()
    cout<<"stack underflow"<<"\n";
    else {
       cout<<"popped element is "<< top->data <<"\n";
-      top = top->yes;
+      top = top->next;
    }
 }
 void display() 
@@ -33,7 +33,7 @@ void display()
       cout<<"the elements present in the stack are: ";
       while (si != NULL) {
          cout<< si->data <<" ";
-         si = si->yes;
+         si = si->next;
       }
    }
    cout<<"\n";

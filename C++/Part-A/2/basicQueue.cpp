@@ -13,7 +13,7 @@ public:
         capacity = total;
         queue = new int;
     }
-    void Enqueue(int temp)
+    void enqueue(int temp)
     {
         if (capacity == rear)
         {
@@ -94,7 +94,7 @@ int main()
             cout << "Enter the value to Enqueue: \n";
             int val;
             cin >> val;
-            queue.Enqueue(val);
+            queue.enqueue(val);
             break;
 
         case 2:

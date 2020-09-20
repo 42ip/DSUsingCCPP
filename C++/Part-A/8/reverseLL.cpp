@@ -5,7 +5,7 @@ using namespace std;
 struct Node
 {
     int data;
-    Node *yes;
+    Node *next;
 };
 
 Node *head = NULL;
@@ -22,8 +22,8 @@ void reverse()
     while (b != NULL)
     {
 
-        n = b->yes;
-        b->yes = a;
+        n = b->next;
+        b->next = a;
         a = b;
         b = n;
     }
@@ -36,16 +36,16 @@ void insert(int val)
 
     Node *ptr = new Node(); // memory is allocated in heap
     ptr->data = val;
-    ptr->yes = NULL;
+    ptr->next = NULL;
 
     if (head != NULL)
     {
         Node *si = head;
-        while (si->yes != NULL)
+        while (si->next != NULL)
         {
-            si = si->yes;
+            si = si->next;
         }
-        si->yes = ptr;
+        si->next = ptr;
     }
     else
     {
@@ -59,8 +59,8 @@ void display()
     Node *ptr = head;
     while (ptr != NULL)
     {
-        cout << ptr->data << "\n";
-        ptr = ptr->yes;
+        cout << ptr->data << " ";
+        ptr = ptr->next;
     }
     cout << "\n"; // spacing b/w the display and reverse
 }
