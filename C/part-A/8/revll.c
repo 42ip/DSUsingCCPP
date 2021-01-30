@@ -39,7 +39,7 @@ void reverse()
         next = curr->next;
         curr->next = prev;
         prev = curr;
-        curr = next;
+        curr = curr->next;
     }
     head = prev;
 }
